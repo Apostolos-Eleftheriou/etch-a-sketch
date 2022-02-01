@@ -1,27 +1,32 @@
-const container = document.querySelector(".container");
-const btnBlack = document.createElement('button');
-const btnGray = document.createElement('button');
-const btnRGB = document.createElement('button');
-const btnSize = document.createElement('button');
-const buttonsContainer = document.querySelectorAll('buttons')
+const colorPicker = document.getElementById('colorPicker');
+const colorBtn = document.getElementById('colorBtn');
+const rainbowBtn = document.getElementById('rainbowBtn');
+const eraserBtn = document.getElementById('eraserBtn');
+const clearBtn = document.getElementById('clearBtn');
+const sizeValue = document.getElementById('sizeValue')
+const sizeSlider = document.getElementById('sizeSlider')
+const grid = document.getElementById('grid')
 
-function makeGrid(row, cols) {
-    for (let grid = 0; grid < (row * cols); grid++){
-        const div = document.createElement("div");
-        div.style.border = '1px solid red';
-        container.style.gridTemplateRows = `repeat(${row}, ifr)`;
-        container.style.gridTemplateColumns = `repeat(${cols}, ifr)`;
-        container.appendChild(div).classList.add('box')
-    }
-    
+
+
+function setupGrid(size, size) {
+    grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`
+    grid.style.gridTemplateRows = `repeat(${size}, 1fr)`
+
+        for (let i = 0; i < size * size; i++) {
+          const gridElement = document.createElement('div'); 
+          gridElement.addEventListener('mouseover', rainbowMode)
+          // gridElement.style.borderColor = 'red';
+          gridElement.className = 'box';
+          grid.appendChild(gridElement);
+        }
 }
 
-makeGrid(16, 16);
+setupGrid(4, 4);
 
-function grayColor() {
-    const boxes = container.querySelectorAll('.box');
-    btnGray.textContent = 'Gray'
-    btnGray.addEventListener('click', () => {
-        let Rnum = Math.floor(Math.random() * 255)
-    })
-}
+function rainbowMode(e) {
+    const randomR = Math.floor(Math.random() * 255); 
+    const randomG = Math.floor(Math.random() * 255); 
+    const randomB = Math.floor(Math.random() * 255); 
+    e.target.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`
+};

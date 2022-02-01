@@ -1,23 +1,32 @@
-.wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    height: 100vh;
+.box {
+  /* background-color: red; */
 }
 
-wrapper h1 {
-    position: absolute;
-    top: 50px;
-    left: 50%;
-    transform: translate(-50%);
-    font-size: 4em;
+#grid {
+  display: grid;
+  width: 500px;
+  height: 500px;
+  border-color: red;
 }
 
-.container {
-    width: 600px;
-    height: 600px;
-    display: grid;
-    z-index: 100;
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.fa-github {
+  color: var(--primary-dark);
+  font-size: 24px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.fa-github:hover {
+  transform: rotate(360deg) scale(1.2);
+}
+
+#sizeSlider {
+    background-color: #dddcdc;
+    border-radius: 10px;
 }
